@@ -3,13 +3,19 @@
 
 set -eu
 
-###################################################
-# These parameters must be changed to your own fork 
+##########################################################################
 
+# These parameters must be changed to your own fork 
 KAYOBE_CONFIG_REPO="https://github.com/example/stackhpc-kayobe-config"
 KAYOBE_CONFIG_BRANCH=main
 
-###################################################
+##########################################################################
+
+# These parameters may be changed if you wish to deviate from the defaults
+BASE_PATH=~
+KAYOBE_BRANCH=stackhpc/yoga 
+KAYOBE_ENVIRONMENT=training
+
 
 if [ $KAYOBE_CONFIG_REPO = "https://github.com/example/stackhpc-kayobe-config" ]
 then
@@ -17,9 +23,6 @@ then
     exit 0
 fi
 
-BASE_PATH=~
-KAYOBE_BRANCH=stackhpc/yoga 
-KAYOBE_ENVIRONMENT=training
 
 PELICAN_HOST="10.0.0.34 pelican pelican.service.compute.sms-lab.cloud"
 PULP_HOST="10.205.3.187 pulp-server pulp-server.internal.sms-cloud"
@@ -135,11 +138,8 @@ $KAYOBE_CONFIG_PATH/environments/$KAYOBE_ENVIRONMENT/configure-local-networking.
 
 # Inspect and provision the overcloud hardware:
 kayobe overcloud inventory discover
-kayobe overcloud hardware inspect
 kayobe overcloud provision
 kayobe overcloud host configure
-# kayobe playbook run $KAYOBE_CONFIG_PATH/ansible/cephadm.yml
-# kayobe playbook run $KAYOBE_CONFIG_PATH/ansible/cephadm-gather-keys.yml
 kayobe overcloud container image pull
 kayobe overcloud service deploy
 source $KOLLA_CONFIG_PATH/admin-openrc.sh
