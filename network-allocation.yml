@@ -4,5 +4,7 @@ aio_ips:
   controller0: 192.168.33.3
   controller1: 192.168.33.9
   controller2: 192.168.33.10
+  storage0: 192.168.33.11
+  storage1: 192.168.33.12
   seed: 192.168.33.5
   seed-hypervisor: 192.168.33.4
