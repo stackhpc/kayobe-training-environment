@@ -2,11 +2,11 @@
 
 set -e
 
-if [[ ! -d ~/os-venv ]]; then
-  virtualenv ~/os-venv
+if [[ ! -d ~/venvs/os-venv ]]; then
+  virtualenv ~/venvs/os-venv
 fi
-~/os-venv/bin/pip install -U pip 
-~/os-venv/bin/pip install python-openstackclient 
+~/venvs/os-venv/bin/pip install -U pip 
+~/venvs/os-venv/bin/pip install python-openstackclient 
 
 init_runonce=$KOLLA_SOURCE_PATH/tools/init-runonce
 if [[ ! -f $init_runonce ]]; then
@@ -14,5 +14,5 @@ if [[ ! -f $init_runonce ]]; then
   exit 1
 fi
 
-source ~/os-venv/bin/activate
+source ~/venvs/os-venv/bin/activate
 $init_runonce
