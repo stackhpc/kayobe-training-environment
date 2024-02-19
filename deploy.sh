@@ -7,13 +7,13 @@ set -eu
 
 # These parameters must be changed to your own fork 
 KAYOBE_CONFIG_REPO="https://github.com/example/stackhpc-kayobe-config"
-KAYOBE_CONFIG_BRANCH=stackhpc/yoga
+KAYOBE_CONFIG_BRANCH=stackhpc/2023.1
 
 ##########################################################################
 
 # These parameters may be changed if you wish to deviate from the defaults
 BASE_PATH=~
-KAYOBE_BRANCH=stackhpc/yoga 
+KAYOBE_BRANCH=stackhpc/2023.1
 KAYOBE_ENVIRONMENT=training
 
 
