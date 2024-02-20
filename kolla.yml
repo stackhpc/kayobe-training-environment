@@ -12,4 +12,3 @@ kolla_overcloud_inventory_custom_services: "{{ lookup('template', kayobe_env_con
 kolla_enable_central_logging: false
 kolla_enable_prometheus: false
 kolla_enable_grafana: false
-kolla_enable_elasticsearch_curator: false
