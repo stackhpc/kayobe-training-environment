@@ -88,7 +88,7 @@ kayobe seed host configure
 
 
 # Deploy local pulp server as a container on the seed VM
-kayobe seed service deploy --tags seed-deploy-containers --kolla-tags none
+kayobe seed service deploy --tags seed-deploy-containers --kolla-tags none -e deploy_containers_registry_attempt_login=False
 
 # Deploying the seed restarts networking interface, run configure-local-networking.sh again to re-add routes.
 $KAYOBE_CONFIG_PATH/environments/$KAYOBE_ENVIRONMENT/configure-local-networking.sh
@@ -114,10 +114,8 @@ kayobe seed container image build bifrost_deploy
 # Re-run full task to set up bifrost_deploy etc. using newly-populated pulp repo
 kayobe seed service deploy
 
-
 # Deploying the seed restarts networking interface, run configure-local-networking.sh again to re-add routes.
 $KAYOBE_CONFIG_PATH/environments/$KAYOBE_ENVIRONMENT/configure-local-networking.sh
-
 
 # NOTE: Make sure to use ./tenks, since just ‘tenks’ will install via PyPI.
 (export TENKS_CONFIG_PATH=$KAYOBE_CONFIG_PATH/environments/$KAYOBE_ENVIRONMENT/tenks.yml && \
