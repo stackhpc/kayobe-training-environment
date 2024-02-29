@@ -8,5 +8,7 @@ kolla_docker_namespace: stackhpc-dev
 ###############################################################################
 # StackHPC configuration.
 
+pulp_timeout_retries: 60
+
 pulp_username: admin
 pulp_password: 9e4bfa04-9d9d-493d-9473-ba92e4361dae
