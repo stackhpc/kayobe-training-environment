@@ -9,6 +9,14 @@ set -eu
 BASE_PATH=~
 KAYOBE_ENVIRONMENT=training
 
+# Check if kayobe password file exists from which to source the password, if it does exist, source it
+if [[ ! -f $BASE_PATH/vault.pass ]]; then
+    echo "Vault password file 'vault.pass' not found in $BASE_PATH"
+    exit 1
+else
+    export KAYOBE_VAULT_PASSWORD=$(cat $BASE_PATH/vault.pass)
+fi
+
 cd
 
 set +u
