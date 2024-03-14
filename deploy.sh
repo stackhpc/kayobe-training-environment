@@ -23,6 +23,14 @@ then
     exit 0
 fi
 
+# Check if a password file exists. If it does, export the contents as the Kayobe vault password environment variable.
+if [[ ! -f $BASE_PATH/vault.pass ]]; then
+    echo "Vault password file 'vault.pass' not found in $BASE_PATH"
+    exit 1
+else
+    export KAYOBE_VAULT_PASSWORD=$(cat $BASE_PATH/vault.pass)
+fi
+
 # Install git and tmux.
 if $(which dnf 2>/dev/null >/dev/null); then
     sudo dnf -y install git tmux
